@@ -1,0 +1,12 @@
+[package]
+name = "game_24"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8.5"
+eval = "0.4.3"
+
+[[bin]]
+name = "game_24"
+path = "01_variables.rs"
