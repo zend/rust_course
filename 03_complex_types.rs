@@ -139,11 +139,33 @@ fn main() {
     let heart = PokerSuit::Hearts(9);
     let clubs = PokerSuit::Clubs(14);
     let diamonds = PokerSuit::Diamonds(8);
-    if let (PokerSuit::Spades(a), 
-      PokerSuit::Hearts(b), 
-      PokerSuit::Clubs(c), 
-      PokerSuit::Diamonds(d)) = (spades, heart, clubs, diamonds) {
-      println!("{} {} {} {}", a, b, c, d);
+    if let PokerSuit::Spades(a) = spades {
+      println!("♠️ {}", a);
+    }
+    if let PokerSuit::Hearts(b) = heart {
+      println!("♥️ {}", b);
+    }
+    if let PokerSuit::Clubs(c) = clubs {
+      println!("♣️ {}", c);
+    }
+    if let PokerSuit::Diamonds(d) = diamonds {
+      println!("♦️ {}", d);
+    }
+    // 另外一种写法
+    let card = PokerSuit::Clubs(9);
+    match card {
+      PokerSuit::Spades(n) => {
+        println!("matched value = {}", n);
+      }
+      PokerSuit::Hearts(n) => {
+        println!("matched value = {}", n);
+      }
+      PokerSuit::Clubs(n) => {
+        println!("matched value = {}", n);
+      }
+      PokerSuit::Diamonds(n) => {
+        println!("matched value = {}", n);
+      }
     }
   }
 

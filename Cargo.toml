@@ -1,5 +1,5 @@
 [package]
-name = "game_24"
+name = "course"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,5 +8,9 @@ rand = "0.8.5"
 eval = "0.4.3"
 
 [[bin]]
-name = "game_24"
-path = "03_complex_types.rs"
+name = "course"
+#path = "01_variables.rs"
+#path = "02_ownership.rs"
+#path = "03_complex_types.rs"
+#path = "04_flow_control.rs"
+path = "05_match_pattern.rs"
