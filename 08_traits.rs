@@ -74,6 +74,71 @@ fn get_random_content() -> impl Summary {
   }
 }
 
+trait Pilot {
+  fn fly(&self);
+}
+
+trait Wizard {
+  fn fly(&self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+  fn fly(&self) {
+      println!("This is your captain speaking.");
+  }
+}
+
+impl Wizard for Human {
+  fn fly(&self) {
+      println!("Up!");
+  }
+}
+
+impl Human {
+  fn fly(&self) {
+      println!("*waving arms furiously*");
+  }
+}
+
+trait Animal {
+  fn baby_name() -> String;
+}
+
+struct Dog;
+
+impl Dog {
+    fn baby_name() -> String {
+        String::from("Doggie")
+    }
+}
+
+impl Animal for Dog {
+  fn baby_name() -> String {
+    String::from("Puppy")
+  }
+}
+
+trait MyPrint : Display {
+  fn print(&self) {
+    let output = self.to_string();
+    println!("output = {}, len={}", output, output.len());
+  }
+}
+
+impl Display for Post {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    write!(f, "{}, {}", self.title, self.content)
+  }
+}
+
+impl MyPrint for Post {
+  fn print(&self) {
+    println!("Post print: {}", *self);
+  }
+}
+
 
 fn main() {
   let post = Post {
@@ -100,4 +165,18 @@ fn main() {
   share2(&tweet);
 
   println!("random {}", get_random_content().summarize());
+
+  let human = Human {};
+  human.fly();
+  Pilot::fly(&human);
+  Wizard::fly(&human);
+
+  println!("A baby dog is called a {}", Dog::baby_name());
+  println!("Animal like dog baby is called a {}", <Dog as Animal>::baby_name());
+
+  let post = Post {
+    title: String::from("Hello"),
+    content: String::from("world"),
+  };
+  post.print();
 }
